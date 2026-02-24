@@ -1,16 +1,47 @@
 /***** Hero component *****/
 .hero {
-  background-image: url($homepage_background_image);
-  background-position: center;
+  position: relative;
+  overflow: hidden;
+  background-image: var(--hero-bg, url($homepage_background_image));
+  background-position: center 96%;
   background-size: cover;
-  height: 300px;
-  padding: 0 20px;
-  text-align: center;
+  min-height: 520px;
+  padding: 70px 20px;
+  text-align: left;
   width: 100%;
 
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      120deg,
+      rgba(7, 12, 16, 0.88) 0%,
+      rgba(9, 17, 20, 0.72) 35%,
+      rgba(10, 24, 28, 0.38) 70%,
+      rgba(10, 24, 28, 0.12) 100%
+    );
+    pointer-events: none;
+  }
+
   &-inner {
-    @include vertical-align;
-    max-width: 610px;
+    position: relative;
+    z-index: 1;
+    max-width: 1120px;
     margin: 0 auto;
+    display: grid;
+    gap: 40px;
+    align-items: center;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+
+    @include tablet {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+  }
+
+  &.hero-no-media &-inner {
+    @include tablet {
+      grid-template-columns: minmax(0, 1fr);
+    }
   }
 }

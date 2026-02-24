@@ -2,22 +2,40 @@
 $header-height: 71px;
 
 .header {
-  @include max-width-container;
   position: relative;
+  width: 100%;
+  background: linear-gradient(120deg, #0a1515 0%, #123333 52%, #0a1515 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f5fbfb;
+  z-index: 5;
+
+  &.is-scrolled {
+    background: linear-gradient(120deg, rgba(10, 21, 21, 0.96) 0%, rgba(18, 51, 51, 0.96) 52%, rgba(10, 21, 21, 0.96) 100%);
+    box-shadow: 0 12px 30px rgba(5, 12, 16, 0.35);
+  }
+}
+
+.header-inner {
+  @include max-width-container;
   align-items: center;
   display: flex;
   height: $header-height;
   justify-content: space-between;
+  gap: 24px;
 }
 
 .logo img {
-  max-height: 37px;
+  max-height: 32px;
   vertical-align: middle;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.3));
 }
 
 .logo span {
   margin: 0 10px;
-  color: $brand_color;
+  color: rgba(240, 253, 253, 0.78);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 .logo a {
@@ -29,9 +47,10 @@ $header-height: 71px;
 }
 
 .user-nav {
-  @include tablet { position: relative; }
-  display: inline-block;
-  position: absolute;
+  @include tablet { position: static; }
+  display: inline-flex;
+  align-items: center;
+  position: static;
   white-space: nowrap;
 
   &[aria-expanded="true"] {
@@ -62,18 +81,24 @@ $header-height: 71px;
 }
 
 .user-nav-list {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 18px;
   list-style: none;
 
   > li {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
   }
 }
 
 .nav-wrapper-desktop {
   @include mobile { display: none; }
   @include tablet { display: none; }
-  @include desktop { display: inline-block; }
+  @include desktop { display: flex; }
+  margin-left: auto;
+  align-items: center;
+  gap: 18px;
 
   a {
     @include tablet {
@@ -81,7 +106,7 @@ $header-height: 71px;
     }
 
     border: 0;
-    color: $link_color;
+    color: rgba(240, 253, 253, 0.82);
     display: none;
     font-size: 14px;
     padding: 0 20px 0 0;
@@ -93,8 +118,26 @@ $header-height: 71px;
     &:focus,
     &:active {
       background-color: transparent;
-      color: $link_color;
+      color: #fff;
       text-decoration: underline;
+    }
+  }
+
+  .gaime-cta-link {
+    background: linear-gradient(120deg, #7df3f3 0%, #66b2b2 100%);
+    border: 1px solid rgba(125, 243, 243, 0.5);
+    border-radius: 999px;
+    color: #0b1b1b;
+    padding: 8px 16px;
+    font-weight: 600;
+    box-shadow: 0 10px 20px rgba(5, 12, 16, 0.2);
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: linear-gradient(120deg, #92f7f7 0%, #6bd3d3 100%);
+      color: #071010;
+      text-decoration: none;
     }
   }
 }
@@ -108,6 +151,7 @@ $header-height: 71px;
     width: auto;
     min-width: 71px;
     cursor: pointer;
+    color: #f5fbfb;
 
     .icon-menu {
       padding: 7px;
@@ -115,18 +159,19 @@ $header-height: 71px;
       width: 30px;
       height: 30px;
       border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     &[aria-expanded="true"] {
       .icon-menu {
-        background: #f3f3f3;
+        background: rgba(255, 255, 255, 0.12);
       }
     }
   }
 
   .menu-list-mobile {
     position: absolute;
-    background-color: #fff;
+    background-color: #f7fbfb;
     box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .15);
     border-top: solid 1px #ddd;
     border-bottom: solid 1px #ddd;

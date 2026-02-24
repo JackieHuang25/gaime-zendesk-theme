@@ -1,6 +1,7 @@
 /***** User info in header *****/
 .user-info {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
 
   .dropdown-toggle::after {
     @include tablet { display: inline-block;}
@@ -9,19 +10,22 @@
 
   > button {
     border: 0;
-    color: $link_color;
+    color: rgba(240, 253, 253, 0.82);
     min-width: 0;
     padding: 0;
     white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 
     &:hover,
     &:focus {
-      color: $link_color;
+      color: #fff;
       background-color: transparent;
     }
 
     &::after {
-      color: $link_color;
+      color: rgba(240, 253, 253, 0.82);
       padding-right: 15px;
 
       [dir="rtl"] & {

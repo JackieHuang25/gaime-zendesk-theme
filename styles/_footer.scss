@@ -1,21 +1,31 @@
 /***** Footer *****/
 .footer {
-  border-top: 1px solid $low-contrast-border-color;
-  margin-top: 60px;
-  padding: 30px 0;
+  border-top: 1px solid rgba(17, 61, 61, 0.2);
+  margin-top: 70px;
+  padding: 0 0 30px;
+  background: #0b1b1b;
+  color: rgba(240, 253, 253, 0.8);
+
+  &-visual {
+    height: 160px;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
 
   a {
-    color: $secondary-text-color;
+    color: rgba(240, 253, 253, 0.78);
   }
 
   &-inner {
     @include max-width-container;
     display: flex;
     justify-content: space-between;
+    padding-top: 24px;
   }
 
   &-language-selector button {
-    color: $secondary-text-color;
+    color: rgba(240, 253, 253, 0.78);
     display: inline-block;
   }
 }
@@ -23,6 +33,6 @@
 .powered-by-zendesk {
   a,
   a:visited {
-    color: $secondary-text-color;
+    color: rgba(240, 253, 253, 0.6);
   }
 }
